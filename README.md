@@ -40,4 +40,4 @@ The default username and password for the admin panel is `admin:admin`.
 
 ## License 📜
 
-This is licensed under [MIT](LICENSE.md).#
+This is licensed under [MIT](LICENSE.md).
