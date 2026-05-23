@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Login{% endblock %}
+
+{% block content %}
+<div class="container box">
+    <h1>Admin Login</h1>
+    <p>Please enter your admin credentials to access the panel.</p>
+    <form action="/admin/login" method="post">
+        <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <button type="submit">Login</button>
+    </form>
+</div>
+{% endblock %}
+{% block scripts %}
+<script>
+    document.querySelector('form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const formData = new FormData(this);
+        const data = {};
+        formData.forEach((value, key) => {
+            data[key] = value;
+        });
+        fetch('/admin/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(result => {
+            if (result.success) {
+                Swal.fire('Success', 'Login successful! Redirecting to admin panel...', 'success').then(() => {
+                    window.location.href = '/admin';
+                });
+            } else {
+                Swal.fire('Error', 'Invalid username or password. Please try again.', 'error');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            Swal.fire('Error', 'An error occurred while logging in. Please try again.', 'error');
+        });
+    });
+</script>
+{% endblock %}

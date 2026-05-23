@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}HiddenForm{% endblock %}
+
+{% block content %}
+<div class="container box">
+    <h1 class="mt-5">Enter Details</h1>
+    <form action="/submit" method="post">
+        {% for key, field in fields %}
+        <div {% if field.hidden %}style="display:none"{% endif %}>
+            <label for="{{ key }}">{{ field.label }}</label>
+            <input
+                type="{{ field.type }}"
+                name="{{ key }}"
+                id="{{ key }}"
+                autocomplete="{{ field.autocomplete }}"
+                {% if field.required %}required{% endif %}
+            >
+        </div>
+        {% endfor %}
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+{% endblock %}
+{% block scripts %}
+<script>
+    document.querySelector('form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const formData = new FormData(this);
+        const data = {};
+        formData.forEach((value, key) => {
+            data[key] = value;
+        });
+        fetch('/submit', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(result => {
+            if (result.success) {
+                Swal.fire('Success', result.message, 'success');
+            } else {
+                Swal.fire('Error', 'An error occurred while submitting the form.', 'error');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            Swal.fire('Error', 'An error occurred while submitting the form. Please try again or contact the administrator.', 'error');
+        });
+    });
+</script>
+{% endblock %}

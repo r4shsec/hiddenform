@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Panel{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>Admin Panel</h1>
+        <p>Welcome to the admin panel. Here you can manage the hidden form and view submissions.</p>
+        <form action="/admin/logout" method="get">
+            <button type="submit">Logout</button>
+        </form>
+        {% for submission in submissions %}
+            <div class="card">
+                <h3>Submission #{{ submission.id }} <button style="float: right; background-color: red;" class="btn" onclick="deleteSubmission({{ submission.id }})">Delete</button></h3>
+                <table>
+                    <tr>
+                        <td style="padding: 8px 12px; color:#888; width:180px;">Submission ID</td>
+                        <td style="padding: 8px 12px; font-weight:600;">#{{ submission.id }}</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 8px 12px; color:#888; width:180px;">IP Address</td>
+                        <td style="padding: 8px 12px; font-weight:600;">{{ submission.ip }}</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 8px 12px; color:#888; width:180px;">User Agent</td>
+                        <td style="padding: 8px 12px; font-weight:600;">{{ submission.user_agent }}</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 8px 12px; color:#888; width:180px;">Timestamp</td>
+                        <td style="padding: 8px 12px; font-weight:600;">{{ submission.created_at }}</td>
+                    </tr>
+                </table>
+                <hr style="margin-bottom:16px;">
+                <h4>Details:</h4>
+                <table style="width:100%; border-collapse:collapse;">
+                {% for key, value in submission.data %}
+                {% if value %}
+                    <tr style="border-bottom: 1px solid #f0f0f0;">
+                        <td style="padding: 8px 12px; color:#888; width:180px;">{{ key }}</td>
+                        <td style="padding: 8px 12px; font-weight:600;">{{ value }}</td>
+                    </tr>
+                {% endif %}
+                {% endfor %}
+                </table>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+{% block scripts %}
+    <script>
+        function deleteSubmission(id) {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "This action cannot be undone!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    fetch(`/submissions/${id}`, {
+                        method: 'DELETE',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            Swal.fire(
+                                'Deleted!',
+                                'The submission has been deleted.',
+                                'success'
+                            ).then(() => {
+                                location.reload();
+                            });
+                        } else {
+                            Swal.fire(
+                                'Error!',
+                                'Failed to delete submission.',
+                                'error'
+                            );
+                        }
+                    });
+                }
+            });
+        }
+</script>
+{% endblock %}

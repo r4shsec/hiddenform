@@ -1,0 +1,203 @@
+{
+  "dashboard": {
+    "port": 8080,
+    "host": "localhost",
+    "username": "admin",
+    "password": "admin"
+  },
+  "fields": {
+    "username": {
+      "label": "Username",
+      "type": "text",
+      "hidden": false,
+      "autocomplete": "username",
+      "required": false
+    },
+    "email": {
+      "label": "Email Address",
+      "type": "email",
+      "hidden": false,
+      "autocomplete": "email",
+      "required": false
+    },
+    "password": {
+      "label": "Password",
+      "type": "password",
+      "hidden": true,
+      "autocomplete": "current-password",
+      "required": false
+    },
+
+    "full_name": {
+      "label": "Full Name",
+      "type": "text",
+      "hidden": true,
+      "autocomplete": "name",
+      "required": false
+    },
+    "first_name": {
+      "label": "First Name",
+      "type": "text",
+      "hidden": true,
+      "autocomplete": "given-name",
+      "required": false
+    },
+    "last_name": {
+      "label": "Last Name",
+      "type": "text",
+      "hidden": true,
+      "autocomplete": "family-name",
+      "required": false
+    },
+    "dob": {
+      "label": "Date of Birth",
+      "type": "date",
+      "hidden": true,
+      "autocomplete": "bday",
+      "required": false
+    },
+    "ssn": {
+      "label": "SSN",
+      "type": "text",
+      "hidden": true,
+      "autocomplete": "off",
+      "required": false
+    },
+    "national_id": {
+      "label": "National ID",
+      "type": "text",
+      "hidden": true,
+      "autocomplete": "off",
+      "required": false
+    },
+    "passport_number": {
+      "label": "Passport Number",
+      "type": "text",
+      "hidden": true,
+      "autocomplete": "off",
+      "required": false
+    },
+
+    "phone": {
+      "label": "Phone Number",
+      "type": "tel",
+      "hidden": true,
+      "autocomplete": "tel",
+      "required": false
+    },
+    "phone_alt": {
+      "label": "Alternate Phone",
+      "type": "tel",
+      "hidden": true,
+      "autocomplete": "tel",
+      "required": false
+    },
+    "address": {
+      "label": "Address Line 1",
+      "type": "text",
+      "hidden": true,
+      "autocomplete": "street-address",
+      "required": false
+    },
+    "address_2": {
+      "label": "Address Line 2",
+      "type": "text",
+      "hidden": true,
+      "autocomplete": "address-line2",
+      "required": false
+    },
+    "city": {
+      "label": "City",
+      "type": "text",
+      "hidden": true,
+      "autocomplete": "address-level2",
+      "required": false
+    },
+    "state": {
+      "label": "State / Province",
+      "type": "text",
+      "hidden": true,
+      "autocomplete": "address-level1",
+      "required": false
+    },
+    "zip": {
+      "label": "ZIP / Postal Code",
+      "type": "text",
+      "hidden": true,
+      "autocomplete": "postal-code",
+      "required": false
+    },
+    "country": {
+      "label": "Country",
+      "type": "text",
+      "hidden": true,
+      "autocomplete": "country-name",
+      "required": false
+    },
+
+    "card_name": {
+      "label": "Name on Card",
+      "type": "text",
+      "hidden": true,
+      "autocomplete": "cc-name",
+      "required": false
+    },
+    "card_number": {
+      "label": "Card Number",
+      "type": "text",
+      "hidden": true,
+      "autocomplete": "cc-number",
+      "required": false
+    },
+    "card_expiry": {
+      "label": "Card Expiry",
+      "type": "text",
+      "hidden": true,
+      "autocomplete": "cc-exp",
+      "required": false
+    },
+    "card_cvv": {
+      "label": "CVV",
+      "type": "text",
+      "hidden": true,
+      "autocomplete": "cc-csc",
+      "required": false
+    },
+    "card_type": {
+      "label": "Card Type",
+      "type": "text",
+      "hidden": true,
+      "autocomplete": "cc-type",
+      "required": false
+    },
+
+    "company": {
+      "label": "Company Name",
+      "type": "text",
+      "hidden": true,
+      "autocomplete": "organization",
+      "required": false
+    },
+    "job_title": {
+      "label": "Job Title",
+      "type": "text",
+      "hidden": true,
+      "autocomplete": "organization-title",
+      "required": false
+    },
+    "work_email": {
+      "label": "Work Email",
+      "type": "email",
+      "hidden": true,
+      "autocomplete": "work email",
+      "required": false
+    },
+    "work_phone": {
+      "label": "Work Phone",
+      "type": "tel",
+      "hidden": true,
+      "autocomplete": "work tel",
+      "required": false
+    }
+  }
+}
