@@ -21,10 +21,11 @@ Some password managers skip attributes such as `hidden` or styling such as `styl
 ## Usage
 
 1. [Download Node.js for your Operating System (OS)](https://nodejs.org/en/download).
-2. Clone this repository:
+2. Clone this repository and change directories:
 
 ```bash
 git clone https://github.com/r4shsec/hiddenform.git
+cd hiddenform
 ```
 
 3. Edit the `config.json` file if you'd like to change anything.
